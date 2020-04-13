@@ -1,0 +1,59 @@
+.content-wrap {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.content-wrap:after {
+    content: "";
+    display: block;
+}
+
+.page-wrap:after, footer{
+    height: 50px;
+}
+
+.title-image {
+    position: absolute;
+    display: inline-block;
+}
+
+.login-row {
+    position: relative;
+    margin-top: 7vh;
+}
+
+.title-text {
+    font-size: 10vw;
+    color: #14cc60;
+}
+
+.title-image {
+    position: relative;
+    height: 13vw;
+    width: 13vw;
+    margin-top: 1.5vw;
+    margin-right: 2vw;
+}
+
+.fadeIn-enter {
+    opacity: 0;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+    opacity: 1;
+    transition: opacity 500ms linear;
+}
+
+.fadeIn-appear {
+    opacity: 0;
+}
+
+.fadeIn-appear.fadeIn-appear-active {
+    opacity: 1;
+    transition: opacity 500ms linear;
+}
+
+.space {
+    height: 5vh;
+    width: 100%;
+}
