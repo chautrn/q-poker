@@ -3,4 +3,5 @@ TODO (organized by priority):
 * fix room functions in server
 * handle socket errors
 * find way to delete empty rooms
+* clean up CSS, remove excessive classes 
 * redirect non-players who click the link to the join screen
