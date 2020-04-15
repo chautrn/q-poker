@@ -17,13 +17,13 @@ app.use(router);
 io.on('connection', socket => {
     console.log('established connection to socket');
 
-    socket.on('joinRoom', ({ name, room }) => {
-        roomManager.joinRoom(name, room, socket.id);
+    socket.on('joinRoom', ({roomNumber, name}) => {
+        roomManager.joinRoom(roomNumber, name, socket.id);
         roomManager.printRooms();
     });
 
-    socket.on('createRoom', () => {
-        let roomNumber = roomManager.makeRoom(socket.id);
+    socket.on('createRoom', ({ name, startingChips, timeLimit, punishment }) => {
+        const roomNumber = roomManager.createRoom(name, startingChips, timeLimit, punishment, socket.id);
         roomManager.printRooms();
         socket.emit('currentRoom', roomNumber);
     });

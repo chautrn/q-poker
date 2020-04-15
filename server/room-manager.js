@@ -1,12 +1,14 @@
 // TODO: Handle errors
 const rooms = [];
 
-const makeRoom = initialUser => {
+const createRoom = (name, startingChips, timeLimit, punishment, userId) => {
     let room = {
         roomNumber: null,
-        users: [initialUser],
-        game: null
+        users: {},
+        gameOptions: { startingChips, timeLimit, punishment } 
     };
+
+    room.users[userId] = name;
 
     // check for room number conflict, generate room number
 
@@ -14,10 +16,15 @@ const makeRoom = initialUser => {
         room.roomNumber = Math.floor(Math.random()*90000) + 10000;
         console.log(room.roomNumber);
     }
-    while (rooms.some(e => e.roomNumber == room.roomNumber));
+    while (rooms.some(e => e.roomNumber == room.roomNumber)); // check for conflicting room numbers
 
     rooms.push(room);
     return room.roomNumber;
+}
+
+const joinRoom = (roomNumber, name, userId) => {
+    room = rooms[0]; // change to filter, this is for testing only
+    room.users[userId] = name;
 }
 
 const deleteUser = userId => {
@@ -27,16 +34,11 @@ const deleteUser = userId => {
 }
 
 const deleteRoomByUser = userId => {
-    rooms.splice(rooms.findIndex(e => e.users.includes(userId)), 1);
+    rooms.splice(rooms.findIndex(room => room.users.includes(userId)), 1);
 }
 
 const getRoomByUser = userId => {
     return rooms.filter(room => room.users.includes(userId));
-}
-
-const joinRoom = (roomNumber, userId) => {
-    room = rooms[0];
-    room.users.push(userId);
 }
 
 // Developer functions
@@ -46,7 +48,7 @@ const printRooms = () => {
 }
 
 module.exports = {
-    makeRoom,
+    createRoom,
     deleteRoomByUser,
     getRoomByUser,
     joinRoom,

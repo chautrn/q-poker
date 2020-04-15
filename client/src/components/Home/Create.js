@@ -1,23 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Slider from '../Slider/Slider';
 
 import { Container, Row, Col, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Create = ({ createRoom, deleteRoom, createGame, setJoinScreen }) => {
+const Create = ({ socket, setJoinScreen }) => {
     const [roomNumber, setRoomNumber] = useState('');
+    const [redirect, setRedirect] = useState(null);
+
+    const createRoom = async (name, startingChips, timeLimit, punishment) => {
+        socket.emit('createRoom', { name, startingChips, timeLimit, punishment });
+
+        const getRoomNumber = new Promise((res, rej) => {
+            socket.once('currentRoom', (roomNumber) => {
+                res(roomNumber);
+            });
+        });
+
+        const roomNumber = await getRoomNumber;
+        setRoomNumber(roomNumber);
+        setRedirect(`/game?room=${roomNumber}`);
+    }
 
     // Game options
+    const [name, setName] = useState('');
     const [startingChips, setStartingChips] = useState('');
     const [timeLimit, setTimeLimit] = useState('');
-    const [smallBlind, setSmallBlind] = useState('');
     const [punishment, setPunishment] = useState('');
 
-    useEffect(() => {setRoomNumber(createRoom())}, []);
-
     return (
+        <div>
+            {redirect ? <Redirect to={redirect}/> :
                 <Container className='container-fluid login-container create  pt-5 pb-5'>
                     <Row className='login-element'>
                         <Col className='input-col' xl={4}>
@@ -25,8 +40,18 @@ const Create = ({ createRoom, deleteRoom, createGame, setJoinScreen }) => {
                                 <input
                                     className='login-input smaller-font stacked-margin'
                                     spellCheck='false'
+                                    placeholder='NAME'
+                                    onChange={e => setName(e.target.value)}
+                                />
+                            </Row>
+                        </Col>
+                        <Col className='input-col' xl={4}>
+                            <Row className='input-row'>
+                                <input
+                                    className='login-input smaller-font stacked-margin'
+                                    spellCheck='false'
                                     placeholder='STARTING CHIPS'
-                                    onChange={(e) => setStartingChips(e.target.value)}
+                                    onChange={e => setStartingChips(e.target.value)}
                                 />
                             </Row>
                         </Col>
@@ -36,17 +61,7 @@ const Create = ({ createRoom, deleteRoom, createGame, setJoinScreen }) => {
                                     className='login-input smaller-font stacked-margin'
                                     spellCheck='false'
                                     placeholder='TIME LIMIT (SECONDS)'
-                                    onChange={(e) => setTimeLimit(e.target.value)}
-                                />
-                            </Row>
-                        </Col>
-                        <Col className='input-col' xl={4}>
-                            <Row className='input-row'>
-                                <input
-                                    className='login-input smaller-font'
-                                    spellCheck='false'
-                                    placeholder='SMALL BLIND AMOUNT'
-                                    onChange={(e) => setSmallBlind(e.target.value)}
+                                    onChange={e => setTimeLimit(e.target.value)}
                                 />
                             </Row>
                         </Col>
@@ -60,20 +75,19 @@ const Create = ({ createRoom, deleteRoom, createGame, setJoinScreen }) => {
                                 <span
                                     className='square_btn'
                                     onClick={() => {
-                                        deleteRoom();
                                         setJoinScreen(true);
                                     }}>BACK</span>
                             </ButtonGroup>
                             <ButtonGroup id='create-container'>
-                                <Link onClick={(e) => (!startingChips || !timeLimit || !smallBlind) ? e.preventDefault() : createGame(startingChips, timeLimit, smallBlind, punishment, roomNumber)}
-                                    to={`/game?room=${roomNumber}`}
-                                >
+                                <a onClick={e => (!name || !startingChips || !timeLimit) ? e.preventDefault() : createRoom(name, startingChips, timeLimit, punishment)}>
                                     <span className='square_btn'>CREATE</span>
-                                </Link>
+                                </a>
                             </ButtonGroup>
                         </ButtonToolbar>
                     </Row>
                 </Container>
+            }
+        </div>
     )
 }
 
