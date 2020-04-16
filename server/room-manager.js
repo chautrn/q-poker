@@ -2,7 +2,7 @@
 const rooms = [];
 
 const createRoom = (name, startingChips, timeLimit, punishment, userId) => {
-    let room = {
+    const room = {
         roomNumber: null,
         users: {},
         gameOptions: { startingChips, timeLimit, punishment } 
@@ -23,18 +23,19 @@ const createRoom = (name, startingChips, timeLimit, punishment, userId) => {
 }
 
 const joinRoom = (roomNumber, name, userId) => {
-    room = rooms[0]; // change to filter, this is for testing only
+    const room = rooms[0]; // change to filter, this is for testing only
     room.users[userId] = name;
 }
 
 const deleteUser = userId => {
     for (const room of rooms) {
-        room.users.splice(users.findIndex(e => e == userId), 1);
+        if (room.users.hasOwnProperty(userId)) delete room.users[userId];
     }
 }
 
 const deleteRoomByUser = userId => {
-    rooms.splice(rooms.findIndex(room => room.users.includes(userId)), 1);
+    const roomIndex = rooms.findIndex(room => room.users.hasOwnProperty(userId));
+    if (roomIndex != -1) rooms.splice(roomIndex, 1);
 }
 
 const getRoomByUser = userId => {

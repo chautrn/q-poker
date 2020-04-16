@@ -8,10 +8,8 @@ import './LoginWindow.css';
 import Join from './Join';
 import Create from './Create';
 
-const LoginWindow = ({ parentSocket}) => {
+const LoginWindow = ({ socket }) => {
     const [joinScreen, setJoinScreen] = useState(true);
-
-    const socket = parentSocket;
 
     const joinRoom = (name, room) => {
         socket.emit('joinRoom', { name, room });

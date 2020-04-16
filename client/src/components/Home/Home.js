@@ -6,17 +6,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../components.css';
 import './Home.css';
 
-import io from 'socket.io-client';
 
 import LoginWindow from './LoginWindow';
-import Footer from '../Footer/Footer';
 
-const Home = () => {
+const Home = ({ socket }) => {
     const [onRender, setOnRender] = useState(true);
 
-    const ENDPOINT = 'localhost:5000';
-
-    const socket = io(ENDPOINT);
+    useEffect(() => {
+        socket.emit('deleteRoom'); // change to delete all instances of user
+    });
 
     return (
         <div>
@@ -26,7 +24,7 @@ const Home = () => {
                         <img className='title-image' src='/title.png' /> <span className='title-text'>POKER</span>
                     </Row>
                     <Row className='login-row'>
-                        <LoginWindow parentSocket={socket} ENDPOINT={ENDPOINT} />
+                        <LoginWindow socket={socket} />
                     </Row>
                 </Container>
             </div>
