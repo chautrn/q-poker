@@ -37,12 +37,10 @@ io.on('connection', socket => {
         console.log(startingChips, timeLimit, smallBlind, punishment, room);
     })
 
-    socket.on('testPrint', () => console.log("TEST"));
-
     socket.on('disconnect', () => {
-        roomManager.deleteRoomByUser(socket.id);
+        roomManager.deleteUser(socket.id);
+        roomManager.deleteEmptyRooms();
         roomManager.printRooms();
-        console.log("DELETED");
     })
 });
 

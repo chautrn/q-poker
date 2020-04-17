@@ -7,7 +7,6 @@ import { Container, Row, Col, ButtonGroup, ButtonToolbar } from 'react-bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Create = ({ socket, setJoinScreen }) => {
-    const [roomNumber, setRoomNumber] = useState('');
     const [redirect, setRedirect] = useState(null);
 
     const createRoom = async (name, startingChips, timeLimit, punishment) => {
@@ -20,7 +19,6 @@ const Create = ({ socket, setJoinScreen }) => {
         });
 
         const roomNumber = await getRoomNumber;
-        setRoomNumber(roomNumber);
         setRedirect(`/game?room=${roomNumber}`);
     }
 
@@ -32,13 +30,13 @@ const Create = ({ socket, setJoinScreen }) => {
 
     return (
         <div>
-            {redirect ? <Redirect to={redirect}/> :
-                <Container className='container-fluid login-container create  pt-5 pb-5'>
+            {redirect ? <Redirect to={redirect} /> :
+                <Container className='container-fluid login-container create-container pt-5 pb-5'>
                     <Row className='login-element'>
                         <Col className='input-col' xl={4}>
                             <Row className='input-row'>
                                 <input
-                                    className='login-input smaller-font stacked-margin'
+                                    className='create-input'
                                     spellCheck='false'
                                     placeholder='NAME'
                                     onChange={e => setName(e.target.value)}
@@ -48,7 +46,7 @@ const Create = ({ socket, setJoinScreen }) => {
                         <Col className='input-col' xl={4}>
                             <Row className='input-row'>
                                 <input
-                                    className='login-input smaller-font stacked-margin'
+                                    className='create-input'
                                     spellCheck='false'
                                     placeholder='STARTING CHIPS'
                                     onChange={e => setStartingChips(e.target.value)}
@@ -58,7 +56,7 @@ const Create = ({ socket, setJoinScreen }) => {
                         <Col className='input-col' xl={4}>
                             <Row className='input-row'>
                                 <input
-                                    className='login-input smaller-font stacked-margin'
+                                    className='create-input'
                                     spellCheck='false'
                                     placeholder='TIME LIMIT (SECONDS)'
                                     onChange={e => setTimeLimit(e.target.value)}
@@ -66,23 +64,16 @@ const Create = ({ socket, setJoinScreen }) => {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className='login-element justify-content-center mt-5'>
+                    <Row className='login-element'>
                         <Slider text={'PUNISHMENT MODE'} onChange={(e) => { setPunishment(e.target.checked) }} />
                     </Row>
                     <Row className='login-element mt-5'>
                         <ButtonToolbar className='login-button-container'>
-                            <ButtonGroup id='back-container'>
                                 <span
-                                    className='square_btn'
-                                    onClick={() => {
-                                        setJoinScreen(true);
-                                    }}>BACK</span>
-                            </ButtonGroup>
-                            <ButtonGroup id='create-container'>
-                                <a onClick={e => (!name || !startingChips || !timeLimit) ? e.preventDefault() : createRoom(name, startingChips, timeLimit, punishment)}>
-                                    <span className='square_btn'>CREATE</span>
-                                </a>
-                            </ButtonGroup>
+                                    className='square_btn mr-4'
+                                    onClick={() => setJoinScreen(true)}>BACK</span>
+                                <span className='square_btn'
+                                    onClick={e => (!name || !startingChips || !timeLimit) ? e.preventDefault() : createRoom(name, startingChips, timeLimit, punishment)}>CREATE</span>
                         </ButtonToolbar>
                     </Row>
                 </Container>

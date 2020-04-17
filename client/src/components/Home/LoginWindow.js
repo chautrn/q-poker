@@ -1,6 +1,5 @@
 // TODO: apart join and create screen to two components
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './LoginWindow.css';
@@ -11,18 +10,10 @@ import Create from './Create';
 const LoginWindow = ({ socket }) => {
     const [joinScreen, setJoinScreen] = useState(true);
 
-    const joinRoom = (name, room) => {
-        socket.emit('joinRoom', { name, room });
-    }
-
-    const deleteRoom = () => {
-        socket.emit('deleteRoom', socket.id);
-    }
-
     return (
         <div className='container-fluid slideAndFadeIn' key={joinScreen}>
             {joinScreen ?
-                <Join {...{ joinRoom, setJoinScreen }}/>
+                <Join {...{ socket, setJoinScreen }}/>
                 :
                 <Create {...{ socket, setJoinScreen }} />
             }

@@ -12,9 +12,16 @@
     height: 50px;
 }
 
-.title-image {
-    position: absolute;
-    display: inline-block;
+.login-container {
+    position: relative;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    max-width: 450px;
+    background: #212121;
+    border: 7px solid #27FB6B;
+    border-radius: 25px;
+    box-shadow: 4px 4px #189B42;
 }
 
 .login-row {

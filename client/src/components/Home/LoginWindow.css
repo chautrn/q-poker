@@ -1,7 +1,3 @@
-.login-element {
-    justify-content: center;
-}
-
 .slideIn {
     animation: slideIn 0.5s ease-in-out;
 }
@@ -14,7 +10,11 @@
     animation: slideIn 0.5s ease-in-out, fadeIn 0.5s linear;
 }
 
-.create {
+.login-element {
+    justify-content: center;
+}
+
+.create-container {
     max-width: 90% !important;
 }
 
@@ -27,7 +27,7 @@
     justify-content: center;
 }
 
-.login-input {
+.join-input {
     padding-left: 3px;
     border-radius: 8px;
     background-color: #404040;
@@ -39,16 +39,25 @@
     transition: 0.1s;
 }
 
-.login-input:hover {
+.join-input:hover {
     background-color: #505050;
 }
 
-.stacked-margin {
+.create-input {
     margin-bottom: 50px;
+    padding-left: 3px;
+    border-radius: 8px;
+    background-color: #404040;
+    border: #404040;
+    color: white;
+    font-size: 26px;
+    height: 50px;
+    width: 80%;
+    transition: 0.1s;
 }
 
-.smaller-font {
-    font-size: 26px;
+.create-input:hover {
+    background-color: #505050;
 }
 
 *:focus {
@@ -58,7 +67,7 @@
 .login-button-container {
     display: flex;
     justify-content: space-evenly;
-    font-size: 200%;
+    font-size: 180%;
 }
 
 .square_btn{ /* from https://saruwakakun.com/en/css3-buttons */
@@ -84,23 +93,11 @@
     background: #27FB6B;
 }
 
-#back-container {
-    margin-right: 5vw;
-}
-
 .slider-text {
     font-size: 1.9vw;
     color: white;
 }
  
-@media (min-width: 1200px) {
-    .stacked-margin {
-        margin-bottom: 0px;
-    }
-
-
-}
-
 @keyframes slideIn {
     from {
         transform: translateY(10%);

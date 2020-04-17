@@ -38,6 +38,12 @@ const deleteRoomByUser = userId => {
     if (roomIndex != -1) rooms.splice(roomIndex, 1);
 }
 
+const deleteEmptyRooms = () => {
+    for (const room of rooms) {
+        if (Object.keys(room.users).length === 0) rooms.splice(rooms.indexOf(room), 1);
+    }
+}
+
 const getRoomByUser = userId => {
     return rooms.filter(room => room.users.includes(userId));
 }
@@ -50,9 +56,10 @@ const printRooms = () => {
 
 module.exports = {
     createRoom,
-    deleteRoomByUser,
-    getRoomByUser,
     joinRoom,
     deleteUser,
+    deleteRoomByUser,
+    deleteEmptyRooms,
+    getRoomByUser,
     printRooms
 }

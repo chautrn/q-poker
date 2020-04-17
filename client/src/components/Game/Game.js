@@ -1,14 +1,13 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 const Game = () => {
     return (
         <div>
-            <Container>
-                <Row>
+            <div className='content-wrap'>
 
-                </Row>
-            </Container>
+            </div>
+            <footer><span className='footer-text'> © 2020 Chau Tran </span></footer>
         </div>
     );
 }
