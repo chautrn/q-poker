@@ -1,5 +1,5 @@
 TODO (organized by priority):
 
-* handle socket errors
 * clean up CSS, remove excessive classes (in progress)
+* handle socket errors
 * redirect non-players who click the link to the join screen
