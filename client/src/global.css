@@ -1,0 +1,11 @@
+.wrapper {
+    background-color: #212121;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-wrap {
+    display: flex;
+    padding-bottom: 30px;
+    height: 100%;
+}

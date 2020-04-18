@@ -10,7 +10,19 @@
     animation: slideIn 0.5s ease-in-out, fadeIn 0.5s linear;
 }
 
-.login-element {
+.lobby-container {
+    position: relative;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    max-width: 450px;
+    background: #212121;
+    border: 7px solid #27FB6B;
+    border-radius: 25px;
+    box-shadow: 4px 4px #189B42;
+}
+
+.lobby-element {
     justify-content: center;
 }
 
@@ -18,59 +30,40 @@
     max-width: 90% !important;
 }
 
-.input-col {
-    justify-content: center;
-}
-
-.input-row {
-    display: flex;
-    justify-content: center;
-}
-
-.join-input {
+input {
     padding-left: 3px;
     border-radius: 8px;
     background-color: #404040;
     border: #404040;
     color: white;
+    height: 50px;
+    width: 80%;
+    transition: 0.1s;
+}
+
+input:hover {
+    background-color: #505050;
+}
+
+.input--join {
     font-size: 30px;
-    height: 50px;
-    width: 80%;
-    transition: 0.1s;
 }
 
-.join-input:hover {
-    background-color: #505050;
-}
-
-.create-input {
-    margin-bottom: 50px;
-    padding-left: 3px;
-    border-radius: 8px;
-    background-color: #404040;
-    border: #404040;
-    color: white;
+.input--create {
     font-size: 26px;
-    height: 50px;
-    width: 80%;
-    transition: 0.1s;
-}
-
-.create-input:hover {
-    background-color: #505050;
 }
 
 *:focus {
     outline: none;
 }
 
-.login-button-container {
+.lobby-button-container {
     display: flex;
     justify-content: space-evenly;
     font-size: 180%;
 }
 
-.square_btn{ /* from https://saruwakakun.com/en/css3-buttons */
+.lobby-button{ /* from https://saruwakakun.com/en/css3-buttons */
     display: inline-block;
     padding: 0.5em 1em;
     text-decoration: none;
@@ -81,7 +74,7 @@
     cursor: pointer;
     transition: 0.2s;
 }
-.square_btn:active {/*OnClick*/ /* from https://saruwakakun.com/en/css3-buttons */
+.lobby-button:active {/*OnClick*/ /* from https://saruwakakun.com/en/css3-buttons */
     -ms-transform: translateY(4px);
     -webkit-transform: translateY(4px);
     transform: translateY(4px);/*Move down*/
@@ -91,11 +84,6 @@
 
 .square_btn:hover {
     background: #27FB6B;
-}
-
-.slider-text {
-    font-size: 1.9vw;
-    color: white;
 }
  
 @keyframes slideIn {

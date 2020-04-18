@@ -1,24 +1,23 @@
 // TODO: apart join and create screen to two components
 import React, { useState } from 'react';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './LoginWindow.css';
+import './Lobby.css';
 
-import Join from './Join';
-import Create from './Create';
+import LobbyJoin from './LobbyJoin';
+import LobbyCreate from './LobbyCreate';
 
-const LoginWindow = ({ socket }) => {
+const Lobby = ({ socket }) => {
     const [joinScreen, setJoinScreen] = useState(true);
 
     return (
         <div className='container-fluid slideAndFadeIn' key={joinScreen}>
             {joinScreen ?
-                <Join {...{ socket, setJoinScreen }}/>
+                <LobbyJoin {...{ socket, setJoinScreen }}/>
                 :
-                <Create {...{ socket, setJoinScreen }} />
+                <LobbyCreate {...{ socket, setJoinScreen }} />
             }
         </div>
     )
 }
 
-export default LoginWindow;
+export default Lobby;

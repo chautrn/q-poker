@@ -1,0 +1,33 @@
+.title-row {
+    justify-content: center;
+    margin-top: 4vh;
+    margin-bottom: 9vh;
+}
+.title-text {
+    font-size: 150px;
+    color: #14cc60;
+}
+
+.title-image {
+    align-self: center;
+    height: 220px;
+    width: 220px;
+    transform: translateY(10px);
+    margin-right: 20px;
+}
+
+.main-row {
+    padding-bottom: 5vh;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .title-text {
+        font-size: 100px;
+    }
+    .title-image {
+        height: 140px;
+        width: 140px;
+        transform: translateY(5px);
+    }
+}

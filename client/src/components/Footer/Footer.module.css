@@ -1,15 +1,3 @@
-.background {
-    background-color: #212121;
-}
-
-.wrapper {
-    position: relative;
-}
-
-.content-wrap {
-    padding-bottom: 30px;
-}
-
 .footer {
     display: flex;
     margin-bottom: 5px;
