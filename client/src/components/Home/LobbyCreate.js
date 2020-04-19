@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-
+import { Container, Row, Col, ButtonToolbar } from 'react-bootstrap';
 import Slider from '../Slider/Slider';
 
-import { Container, Row, Col, ButtonToolbar } from 'react-bootstrap';
+import styles from './Lobby.module.css';
 
 const LobbyCreate = ({ socket, setJoinScreen }) => {
     const [redirect, setRedirect] = useState(null);
@@ -30,11 +30,11 @@ const LobbyCreate = ({ socket, setJoinScreen }) => {
     return (
         <div>
             {redirect ? <Redirect to={redirect} /> :
-                <Container fluid className='lobby-container create-container pt-5 pb-5'>
-                    <Row className='lobby-element'>
+                <Container fluid className={styles['create-container']}>
+                    <Row className={[styles['lobby-row']].join(' ')}>
                         <Col className='mb-5' align='center' xl={4}>
                             <input
-                                className='input--create'
+                                className={styles['input--create']}
                                 spellCheck='false'
                                 placeholder='NAME'
                                 onChange={e => setName(e.target.value)}
@@ -42,7 +42,7 @@ const LobbyCreate = ({ socket, setJoinScreen }) => {
                         </Col>
                         <Col className='mb-5' align='center' xl={4}>
                             <input
-                                className='input--create'
+                                className={styles['input--create']}
                                 spellCheck='false'
                                 placeholder='STARTING CHIPS'
                                 onChange={e => setStartingChips(e.target.value)}
@@ -50,22 +50,22 @@ const LobbyCreate = ({ socket, setJoinScreen }) => {
                         </Col>
                         <Col className='mb-5' align='center' xl={4}>
                             <input
-                                className='input--create'
+                                className={styles['input--create']}
                                 spellCheck='false'
                                 placeholder='TIME LIMIT (SECONDS)'
                                 onChange={e => setTimeLimit(e.target.value)}
                             />
                         </Col>
                     </Row>
-                    <Row className='lobby-element'>
+                    <Row className={styles['lobby-row']}>
                         <Slider text={'PUNISHMENT MODE'} onChange={(e) => { setPunishment(e.target.checked) }} />
                     </Row>
-                    <Row className='lobby-element mt-5'>
-                        <ButtonToolbar className='lobby-button-container'>
+                    <Row className={[styles['lobby-row'], styles['mt-50']].join(' ')}>
+                        <ButtonToolbar className={styles['lobby-button-container']}>
                             <span
-                                className='lobby-button mr-4'
+                                className={[styles['lobby-button'], styles['mr-30']].join(' ')}
                                 onClick={() => setJoinScreen(true)}>BACK</span>
-                            <span className='lobby-button'
+                            <span className={styles['lobby-button']}
                                 onClick={e => (!name || !startingChips || !timeLimit) ? e.preventDefault() : createRoom(name, startingChips, timeLimit, punishment)}>CREATE</span>
                         </ButtonToolbar>
                     </Row>

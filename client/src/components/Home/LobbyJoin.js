@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { Container, Row, ButtonToolbar } from 'react-bootstrap';
+
+import styles from './Lobby.module.css';
 
 const LobbyJoin = ({ setJoinScreen, socket }) => {
     const [name, setName] = useState('');
@@ -12,29 +13,29 @@ const LobbyJoin = ({ setJoinScreen, socket }) => {
     }
 
     return (
-        <Container className='lobby-container p-5'>
-            <Row className='lobby-element'>
+        <Container className={styles['join-container']}>
+            <Row className={styles['lobby-row']}>
                 <input
-                    className='input--join'
+                    className={styles['input--join']}
                     spellCheck='false'
                     placeholder='NAME'
                     onChange={e => setName(e.target.value)}
                 />
             </Row>
-            <Row className='lobby-element mt-5'>
+            <Row className={[styles['lobby-row'], styles['mt-50']].join(' ')}>
                 <input
-                    className='input--join'
+                    className={styles['input--join']}
                     spellCheck='false'
                     placeholder='ROOM ID'
                     onChange={e => setRoomNumber(e.target.value)}
                 />
             </Row>
-            <Row className='lobby-element mt-5'>
-                <ButtonToolbar className='lobby-button-container'>
-                    <Link onClick={e => (!name || !roomNumber) ? e.preventDefault() : joinRoom(name, roomNumber)} to={`/game?room=${roomNumber}`}>
-                        <span className='lobby-button mr-4'>JOIN</span>
+            <Row className={[styles['lobby-row'], styles['mt-50']].join(' ')}>
+                <ButtonToolbar className={styles['lobby-button-container']}>
+                    <Link className={styles['mr-30']} onClick={e => (!name || !roomNumber) ? e.preventDefault() : joinRoom(name, roomNumber)} to={`/game?room=${roomNumber}`}>
+                        <span className={styles['lobby-button']}>JOIN</span>
                     </Link>
-                    <span className='lobby-button' onClick={() => setJoinScreen(false)}>CREATE</span>
+                    <span className={styles['lobby-button']} onClick={() => setJoinScreen(false)}>CREATE</span>
                 </ButtonToolbar>
             </Row>
         </Container>

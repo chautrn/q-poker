@@ -10,7 +10,7 @@
     animation: slideIn 0.5s ease-in-out, fadeIn 0.5s linear;
 }
 
-.lobby-container {
+.join-container {
     position: relative;
     justify-content: center;
     width: auto;
@@ -20,37 +20,65 @@
     border: 7px solid #27FB6B;
     border-radius: 25px;
     box-shadow: 4px 4px #189B42;
-}
-
-.lobby-element {
-    justify-content: center;
+    padding: 50px;
 }
 
 .create-container {
+    position: relative;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    max-width: 450px;
+    background: #212121;
+    border: 7px solid #27FB6B;
+    border-radius: 25px;
+    box-shadow: 4px 4px #189B42;
+    padding: 50px;
     max-width: 90% !important;
 }
 
-input {
+.lobby-row {
+    justify-content: center;
+}
+
+.mb-50 {
+    margin-bottom: 50px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+.mr-30 {
+    margin-right: 30px;
+}
+
+.input--join {
     padding-left: 3px;
     border-radius: 8px;
     background-color: #404040;
     border: #404040;
     color: white;
     height: 50px;
-    width: 80%;
+    width: 90%;
     transition: 0.1s;
-}
-
-input:hover {
-    background-color: #505050;
-}
-
-.input--join {
     font-size: 30px;
 }
 
 .input--create {
+    padding-left: 3px;
+    border-radius: 8px;
+    background-color: #404040;
+    border: #404040;
+    color: white;
+    height: 50px;
+    width: 90%;
+    transition: 0.1s;
     font-size: 26px;
+}
+
+.input--join:hover, .input--create:hover {
+    background-color: #505050;
 }
 
 *:focus {
@@ -82,7 +110,7 @@ input:hover {
     border-bottom: none;
 }
 
-.square_btn:hover {
+.lobby-button:hover {
     background: #27FB6B;
 }
  

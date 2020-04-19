@@ -15,6 +15,9 @@ const Game = () => {
                         <span className='title-text'>POKER</span>
                    </Row>
                    <Row className='board-row'>
+                       <input placeHolder='testingtesting'>
+
+                       </input>
 
                    </Row>
                </Container> 

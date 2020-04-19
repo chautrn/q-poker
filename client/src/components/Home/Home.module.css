@@ -21,7 +21,7 @@
     height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) { /* BS xl breakpoint */
     .title-text {
         font-size: 100px;
     }
