@@ -8,14 +8,13 @@ const createRoom = (name, startingChips, timeLimit, punishment, userId) => {
         gameOptions: { startingChips, timeLimit, punishment } 
     };
 
-    room.users.push([userId, name]); // initial user
-
-    console.log(JSON.stringify(room.users));
+    users.push([name, userId]);
 
     // check for room number conflict, generate room number
 
-    do {
+    do { // generate room number
         room.roomNumber = Math.floor(Math.random()*90000) + 10000;
+        console.log(room.roomNumber);
     }
     while (rooms.some(e => e.roomNumber == room.roomNumber)); // check for conflicting room numbers
 
@@ -25,8 +24,7 @@ const createRoom = (name, startingChips, timeLimit, punishment, userId) => {
 
 const joinRoom = (roomNumber, name, userId) => {
     const room = rooms[0]; // change to filter, this is for testing only
-    room.users.push([userId, name]);
-    console.log(JSON.stringify(room.users));
+    room.users.push([name, userId]);
 }
 
 const deleteUser = userId => {

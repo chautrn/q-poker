@@ -1,3 +1,9 @@
+/*
+    Example constructor inputs:
+
+*/
 class Poker {
-    constructor()
+    constructor(users, gameOptions) {
+        
+    }
 }
