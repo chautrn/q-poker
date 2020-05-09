@@ -55,7 +55,7 @@
 
 .input--join {
     padding-left: 3px;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: #404040;
     border: #404040;
     color: white;
@@ -67,7 +67,7 @@
 
 .input--create {
     padding-left: 3px;
-    border-radius: 8px;
+    border-radius: 6px;
     background-color: #404040;
     border: #404040;
     color: white;

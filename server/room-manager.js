@@ -1,7 +1,7 @@
 // TODO: Handle errors
 const rooms = [];
 
-const createRoom = (name, startingChips, timeLimit, punishment, userId) => {
+const createRoom = (userId, name, startingChips, timeLimit, punishment) => {
     const room = {
         roomNumber: null,
         users: [],
@@ -31,7 +31,7 @@ const joinRoom = (roomNumber, name, userId) => {
 
 const deleteUser = userId => {
     for (const room of rooms) {
-        if (room.users.hasOwnProperty(userId)) delete room.users[userId];
+        if (room.users.some(user => user.includes(userId))) rooms.splice(rooms.indexOf(room), 1);
     }
 }
 
@@ -42,7 +42,7 @@ const deleteRoomByUser = userId => {
 
 const deleteEmptyRooms = () => {
     for (const room of rooms) {
-        if (Object.keys(room.users).length === 0) rooms.splice(rooms.indexOf(room), 1);
+        if (room.users.length === 0) rooms.splice(rooms.indexOf(room), 1);
     }
 }
 

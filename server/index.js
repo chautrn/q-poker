@@ -23,7 +23,7 @@ io.on('connection', socket => {
     });
 
     socket.on('createRoom', ({ name, startingChips, timeLimit, punishment }) => {
-        const roomNumber = roomManager.createRoom(name, startingChips, timeLimit, punishment, socket.id);
+        const roomNumber = roomManager.createRoom(socket.id, name, startingChips, timeLimit, punishment);
         roomManager.printRooms();
         socket.emit('currentRoom', roomNumber);
     });
