@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './Home.module.css';
 
 import Footer from '../Footer/Footer';
-import Lobby from './Lobby';
+import GameMaker from './GameMaker';
 
 const Home = ({ socket }) => {
 
@@ -21,7 +21,7 @@ const Home = ({ socket }) => {
                         <img className={styles['title-image']} src='/title.png' alt='POKER-TITLE'/> <span className={styles['title-text']}>POKER</span>
                     </Row>
                     <Row className={styles['main-row']}>
-                        <Lobby socket={socket} />
+                        <GameMaker socket={socket} />
                     </Row>
                 </Container>
             </div>

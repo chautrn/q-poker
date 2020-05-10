@@ -3,9 +3,9 @@ import { Redirect } from 'react-router-dom';
 import { Container, Row, Col, ButtonToolbar } from 'react-bootstrap';
 import Slider from '../Slider/Slider';
 
-import styles from './Lobby.module.css';
+import styles from './GameMaker.module.css';
 
-const LobbyCreate = ({ socket, setJoinScreen }) => {
+const GameMakerCreate = ({ socket, setJoinScreen }) => {
     const [redirect, setRedirect] = useState(null);
 
     const createRoom = async (name, startingChips, timeLimit, punishment) => {
@@ -75,4 +75,4 @@ const LobbyCreate = ({ socket, setJoinScreen }) => {
     )
 }
 
-export default LobbyCreate;
+export default GameMakerCreate;

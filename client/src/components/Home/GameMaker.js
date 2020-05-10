@@ -2,23 +2,23 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 
-import styles from './Lobby.module.css';
+import styles from './GameMaker.module.css';
 
-import LobbyJoin from './LobbyJoin';
-import LobbyCreate from './LobbyCreate';
+import GameMakerJoin from './GameMakerJoin';
+import GameMakerCreate from './GameMakerCreate';
 
-const Lobby = ({ socket }) => {
+const GameMaker = ({ socket }) => {
     const [joinScreen, setJoinScreen] = useState(true);
 
     return (
         <Container fluid className={styles['slideAndFadeIn']} key={joinScreen}>
             {joinScreen ?
-                <LobbyJoin {...{ socket, setJoinScreen }}/>
+                <GameMakerJoin {...{ socket, setJoinScreen }}/>
                 :
-                <LobbyCreate {...{ socket, setJoinScreen }} />
+                <GameMakerCreate {...{ socket, setJoinScreen }} />
             }
         </Container>
     )
 }
 
-export default Lobby;
+export default GameMaker;

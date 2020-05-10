@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, ButtonToolbar } from 'react-bootstrap';
 
-import styles from './Lobby.module.css';
+import styles from './GameMaker.module.css';
 
-const LobbyJoin = ({ setJoinScreen, socket }) => {
+const GameMakerJoin = ({ setJoinScreen, socket }) => {
     const [name, setName] = useState('');
     const [roomNumber, setRoomNumber] = useState('');
 
@@ -42,4 +42,4 @@ const LobbyJoin = ({ setJoinScreen, socket }) => {
     )
 }
 
-export default LobbyJoin;
+export default GameMakerJoin;
