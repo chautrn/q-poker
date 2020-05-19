@@ -9,10 +9,6 @@ import GameMaker from './GameMaker';
 
 const Home = ({ socket }) => {
 
-    useEffect(() => {
-        socket.emit('deleteRoom'); // change to delete all instances of user
-    });
-
     return (
         <div className='wrapper'>
             <div className='content-wrap'>

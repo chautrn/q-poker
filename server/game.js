@@ -1,10 +1,11 @@
 // Input are passed in from room-manager.js
 
-const createUser = (userId, username, balance) => {
+const createPlayer = (userId, username, balance) => {
     return {
         id: userId,
         name: username,
         currentBalance: balance
+        inRound: false;
     };
 }
 
@@ -27,6 +28,7 @@ const createDeck = () => {
 }
 
 class Poker {
+    // User object = [userId, name]
     constructor(initialUser, { startingChips, timeLimit, punishment }) { // gameOptions = { startingChips, timeLimit, punishment }
         // Options
         this.startingChips = startingChips;
@@ -35,15 +37,13 @@ class Poker {
 
         // Game data 
         this.deck = createDeck();
-        this.users = [createUser(initialUser)];
-        /*
-            Betting Rounds:
+        this.players = [createPlayer(initialUserId)];
+        /* Betting Rounds:
             Preflop 0
             Flop 1
             Turn 2
             River 3
-            Showdown 4
-            */
+            Showdown 4 */
         this.bettingRound = 0;
         this.pot = 0;
         this.communityCards = [];
@@ -51,7 +51,24 @@ class Poker {
 
         // Round data
         this.currentBet;
+        this.dealerButton;
     }
+
+    /* Moves:
+     -2 = need response
+     -1 = fold
+     0 = check
+     else = bet */
+    submitMove(userId, move) { // Returns true if response is successful, false otherwise
+        let user = this.users.find(u => u.id === userId);
+            
+        
+        
+    }
+
+    start() {
+        
+    }    
 }
 
 let testObj = { startingChips: 1200, timeLimit: 20, punishment: true };

@@ -11,6 +11,12 @@ const roomManager = require('./room-manager');
 
 const PORT = process.env.PORT || 5000;
 
+const emitToUserId = (userId, event, data) => {
+    io.sockets.to(userId).emit(userId, event, data);
+}
+
+roomManager.addClientHandler(emitToUser);
+
 app.use(cors());
 app.use(router);
 
@@ -27,11 +33,6 @@ io.on('connection', socket => {
         roomManager.printRooms();
         socket.emit('currentRoom', roomNumber);
     });
-
-    socket.on('deleteRoom', () => {
-        roomManager.deleteRoomByUser(socket.id);
-        roomManager.printRooms();
-    })
 
     socket.on('createGame', ({ startingChips, timeLimit, smallBlind, punishment, room }) => {
         console.log(startingChips, timeLimit, smallBlind, punishment, room);

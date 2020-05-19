@@ -1,14 +1,24 @@
-// TODO: Handle errors
+// TODO: Convert room manager to class
 const rooms = [];
+const clientHandler;
 
+const addToClientHandler = handler => {
+    clientHandler = handler;
+}
 const createRoom = (userId, name, startingChips, timeLimit, punishment) => {
     const room = {
         roomNumber: null,
         users: [],
         gameOptions: { startingChips, timeLimit, punishment } 
-    };
+    }
 
-    room.users.push([userId, name]); // initial user
+    const user = {
+        userId,
+        name,
+        clientData: null,
+    }
+
+    room.users.push(user); // initial user
 
     console.log(JSON.stringify(room.users));
 
@@ -25,29 +35,22 @@ const createRoom = (userId, name, startingChips, timeLimit, punishment) => {
 
 const joinRoom = (roomNumber, name, userId) => {
     const room = rooms[0]; // change to filter, this is for testing only
-    room.users.push([userId, name]);
-    console.log(JSON.stringify(room.users));
+    room.users.push({userId, name});
 }
 
 const deleteUser = userId => {
     for (const room of rooms) {
-        if (room.users.some(user => user.includes(userId))) rooms.splice(rooms.indexOf(room), 1);
+        const userIndex = room.users.findIndex(user => user.userId === userId);
+        if (userIndex != -1) room.users.splice(userIndex, 1);
     }
-}
-
-const deleteRoomByUser = userId => {
-    const roomIndex = rooms.findIndex(room => room.users.hasOwnProperty(userId));
-    if (roomIndex != -1) rooms.splice(roomIndex, 1);
 }
 
 const deleteEmptyRooms = () => {
-    for (const room of rooms) {
-        if (room.users.length === 0) rooms.splice(rooms.indexOf(room), 1);
+    for (let i = rooms.length - 1; i >= 0; i--) {
+        if (rooms[i].users.length === 0) {
+            rooms.splice(i, 1);
+        }
     }
-}
-
-const getRoomByUser = userId => {
-    return rooms.filter(room => room.users.includes(userId));
 }
 
 // Developer functions
@@ -60,8 +63,6 @@ module.exports = {
     createRoom,
     joinRoom,
     deleteUser,
-    deleteRoomByUser,
     deleteEmptyRooms,
-    getRoomByUser,
     printRooms
 }
