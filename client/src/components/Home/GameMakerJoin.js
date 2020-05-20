@@ -8,8 +8,8 @@ const GameMakerJoin = ({ setJoinScreen, socket }) => {
     const [name, setName] = useState('');
     const [roomNumber, setRoomNumber] = useState('');
 
-    const joinRoom = (name, room) => {
-        socket.emit('joinRoom', { name, room });
+    const joinRoom = (roomNumber, name) => {
+        socket.emit('joinRoom', { roomNumber, name });
     }
 
     return (
@@ -32,7 +32,7 @@ const GameMakerJoin = ({ setJoinScreen, socket }) => {
             </Row>
             <Row className={[styles['lobby-row'], styles['mt-50']].join(' ')}>
                 <ButtonToolbar className={styles['lobby-button-container']}>
-                    <Link className={styles['mr-30']} onClick={e => (!name || !roomNumber) ? e.preventDefault() : joinRoom(name, roomNumber)} to={`/game?room=${roomNumber}`}>
+                    <Link className={styles['mr-30']} onClick={e => (!name || !roomNumber) ? e.preventDefault() : joinRoom(roomNumber, name)} to={`/game?room=${roomNumber}`}>
                         <span className={styles['lobby-button']}>JOIN</span>
                     </Link>
                     <span className={styles['lobby-button']} onClick={() => setJoinScreen(false)}>CREATE</span>
