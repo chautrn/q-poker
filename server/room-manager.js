@@ -37,7 +37,13 @@ class RoomManager {
 
     joinRoom(roomNumber, name, userId) {
         const room = this.#rooms.find(r => r.roomNumber == roomNumber);
-        room.users.push(this.constructor.createUser(userId, name));
+        if (room === undefined) {
+            return false;
+        }
+        else {
+            room.users.push(this.constructor.createUser(userId, name));
+            return true;
+        }
     }
 
     deleteUser(userId) {

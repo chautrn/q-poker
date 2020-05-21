@@ -21,8 +21,15 @@ io.on('connection', socket => {
     console.log('established connection to socket');
 
     socket.on('joinRoom', ({roomNumber, name}) => {
-        pokerRoomManager.joinRoom(roomNumber, name, socket.id);
-        pokerRoomManager.printRooms();
+        if (pokerRoomManager.joinRoom(roomNumber, name, socket.id)) {
+            console.log("Join Success: ");
+            pokerRoomManager.printRooms();
+            socket.emit('errorStatus', 'found');
+        }
+        else {
+            console.log("Join Failed: ");
+            socket.emit('errorStatus', 'roomNotFound');
+        }
     });
 
     socket.on('createRoom', ({ name, startingChips, timeLimit, punishment }) => {

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import { Container, Row, ButtonToolbar } from 'react-bootstrap';
 
 import styles from './GameMaker.module.css';
@@ -8,10 +8,30 @@ const GameMakerJoin = ({ setJoinScreen, socket }) => {
     const [name, setName] = useState('');
     const [roomNumber, setRoomNumber] = useState('');
 
-    const joinRoom = (roomNumber, name) => {
+    const [redirect, setRedirect] = useState(null);
+
+    // error handling
+    const [error, setError] = useState('');
+    const [notFound, setNotFound] = useState(false);
+
+    useEffect(() => {
+        socket.on('errorStatus', (response) => {
+            if (response === 'found') {
+                setRedirect(`/game?room=${roomNumber}`);
+            }
+            else {
+                setError(response);
+            }
+        })
+    }, []);
+
+    const handleJoin = (roomNumber, name) => {
         socket.emit('joinRoom', { roomNumber, name });
     }
 
+    if (redirect) {
+        return <Redirect to={redirect} />
+    }
     return (
         <Container className={styles['join-container']}>
             <Row className={styles['lobby-row']}>
@@ -30,11 +50,12 @@ const GameMakerJoin = ({ setJoinScreen, socket }) => {
                     onChange={e => setRoomNumber(e.target.value)}
                 />
             </Row>
+            {error == 'roomNotFound' &&
+            <h1 className={styles['error-message']}> Room not found! </h1>
+            }
             <Row className={[styles['lobby-row'], styles['mt-50']].join(' ')}>
                 <ButtonToolbar className={styles['lobby-button-container']}>
-                    <Link className={styles['mr-30']} onClick={e => (!name || !roomNumber) ? e.preventDefault() : joinRoom(roomNumber, name)} to={`/game?room=${roomNumber}`}>
-                        <span className={styles['lobby-button']}>JOIN</span>
-                    </Link>
+                    <span className={[styles['lobby-button'], styles['mr-30']].join(' ')} onClick={() => handleJoin(roomNumber, name)}>JOIN</span>
                     <span className={styles['lobby-button']} onClick={() => setJoinScreen(false)}>CREATE</span>
                 </ButtonToolbar>
             </Row>
