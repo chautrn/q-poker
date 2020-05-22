@@ -1,6 +1,6 @@
 TODO (organized by priority):
 
+* design game page
+* implement custom avatar images and punishment link
 * create lobby page, where there will be a start button to start the game
-* clean up CSS, remove excessive classes (in progress)
-* handle socket errors
 * redirect non-players who click the link to the join screen
