@@ -4,8 +4,10 @@ const createPlayer = (userId, username, balance) => {
     return {
         id: userId,
         name: username,
-        currentBalance: balance
-        inRound: false;
+        currentBalance: balance,
+        inRound: false,
+        hand: null,
+        move: null
     };
 }
 
@@ -29,7 +31,7 @@ const createDeck = () => {
 
 class Poker {
     // User object = [userId, name]
-    constructor(initialUser, { startingChips, timeLimit, punishment }) { // gameOptions = { startingChips, timeLimit, punishment }
+    constructor(initialUser, clientHandler, { startingChips, timeLimit, punishment }) { // gameOptions = { startingChips, timeLimit, punishment }
         // Options
         this.startingChips = startingChips;
         this.timeLimit = timeLimit;
@@ -54,21 +56,37 @@ class Poker {
         this.dealerButton;
     }
 
+    getCard() {
+        let index = Math.floor(Math.random() * this.deck.length);
+        let card = this.deck[index];
+        this.deck.splice(index, 1);
+
+        return card;
+    }
+
     /* Moves:
      -2 = need response
      -1 = fold
      0 = check
      else = bet */
-    submitMove(userId, move) { // Returns true if response is successful, false otherwise
-        let user = this.users.find(u => u.id === userId);
-            
-        
-        
+    start() {
+        for (player in this.players) {
+            player.inRound = true;
+            player.currentBalance = startingChips;
+            player.move = -2;
+        }
+    }    
+
+    preflop() {
+        for (player in this.players) {
+            let     
+        }
     }
 
-    start() {
-        
-    }    
+    submitMove(userId, move) { // Returns true if response is successful, false otherwise
+        let user = this.users.find(u => u.id === userId);
+    }
+
 }
 
 let testObj = { startingChips: 1200, timeLimit: 20, punishment: true };
