@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,13 +8,12 @@ import Footer from '../Footer/Footer';
 import GameMaker from './GameMaker';
 
 const Home = ({ socket }) => {
-
     return (
         <div className='wrapper'>
             <div className='content-wrap'>
                 <Container fluid>
                     <Row className={styles['title-row']}>
-                        <img className={styles['title-image']} src='/title.png' alt='POKER-TITLE'/> <span className={styles['title-text']}>POKER</span>
+                        <span className={styles['title-text']}> Q-P♠KER </span>
                     </Row>
                     <Row className={styles['main-row']}>
                         <GameMaker socket={socket} />

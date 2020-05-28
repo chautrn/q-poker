@@ -3,24 +3,23 @@ import React from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Footer from '../Footer/Footer';
 
-import './Game.css';
+import styles from './Game.module.css';
 
 const Game = () => {
     return (
         <div className='wrapper'>
             <div className='content-wrap'>
-               <Container fluid>
-                   <Row className='title-row'>
-                        <img className='title-image' src='/title.png' alt='title.png' />
-                        <span className='title-text'>POKER</span>
-                   </Row>
-                   <Row className='board-row'>
-                   </Row>
-               </Container> 
+                <Container fluid>
+                    <Row className='board-row'>
+                        <fieldset>
+                            <legend> ROOM
+                        </fieldset>
+                        </Row>
+                    </Container> 
+                </div>
+                <Footer />
             </div>
-            <Footer />
-        </div>
-    );
-}
+        );
+    }
 
-export default Game;
+    export default Game;

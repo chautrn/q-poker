@@ -11,7 +11,7 @@ const GameMaker = ({ socket }) => {
     const [joinScreen, setJoinScreen] = useState(true);
 
     return (
-        <Container fluid className={styles['slideAndFadeIn']} key={joinScreen}>
+        <Container fluid className={styles['container-intro']} key={joinScreen}>
             {joinScreen ?
                 <GameMakerJoin {...{ socket, setJoinScreen }}/>
                 :
