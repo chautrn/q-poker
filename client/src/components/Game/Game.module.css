@@ -1,0 +1,19 @@
+fieldset {
+    width: 200px;
+    height: 50px;
+    border: solid white 1px;
+}
+
+.poker-table-border {
+    border-style: solid;
+    border-color: white;
+}
+
+.poker-table-legend {
+    color: white;
+}
+
+.poker-table-container {
+    height: 1000px;
+    width: 1000px;
+}

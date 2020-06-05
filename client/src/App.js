@@ -8,8 +8,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import io from 'socket.io-client';
 
+// Global css
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 import './global.css';
+
 
 const App = () => {
     const ENDPOINT = 'localhost:5000';

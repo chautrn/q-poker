@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './Home.module.css';
 
 import Footer from '../Footer/Footer';

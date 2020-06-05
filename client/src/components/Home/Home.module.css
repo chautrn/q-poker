@@ -2,11 +2,11 @@
     position: relative;
     justify-content: center;
     margin-top: 4vh;
-    margin-bottom: 9vh;
+    margin-bottom: 6vh;
 }
 .title-text {
     position: relative;
-    font-size: 150px;
+    font-size: 125px;
     color: #27fb6b;
     text-shadow: 5px 5px #189b42;
 }

@@ -9,17 +9,15 @@ const Game = () => {
     return (
         <div className='wrapper'>
             <div className='content-wrap'>
-                <Container fluid>
-                    <Row className='board-row'>
-                        <fieldset>
-                            <legend> ROOM
-                        </fieldset>
-                        </Row>
-                    </Container> 
-                </div>
-                <Footer />
+                <fieldset>
+                    <legend className={styles['poker-table-legend']}> 
+                        Test 
+                    </legend>
+                </fieldset>
             </div>
-        );
-    }
+            <Footer />
+        </div>
+    );
+}
 
-    export default Game;
+export default Game;

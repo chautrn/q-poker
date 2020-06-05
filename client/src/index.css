@@ -1,6 +1,6 @@
 #root, #root>div {
-    min-height: 800px;
     height: 100vh;
+    min-height: 752px;
     margin: 0;
     background-color: #212121;
 }
