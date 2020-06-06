@@ -2,6 +2,7 @@
     background-color: #212121;
     position: relative;
     overflow: hidden;
+    padding-bottom: 40px;
 }
 
 .content-wrap {

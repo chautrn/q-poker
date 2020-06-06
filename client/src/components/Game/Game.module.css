@@ -1,19 +1,26 @@
-fieldset {
-    width: 200px;
-    height: 50px;
-    border: solid white 1px;
+.main-row {
+    height: 100%;
+}
+.board-col {
 }
 
-.poker-table-border {
-    border-style: solid;
-    border-color: white;
+.chat-col {
+
 }
 
-.poker-table-legend {
+.fieldset{
+    height: calc(100% - 40px);  /* 40px = height of footer */ 
+    margin-top: 20px;
+    border: 6px solid #27FB6B;
+    border-radius: 25px;
+    box-shadow: 4px 4px #189B42;
+}
+
+.legend {
+    width: auto;
+    margin: 0 0 0 40px;
+    padding: 0 20px 0 20px; 
+    border-bottom: none;
     color: white;
-}
-
-.poker-table-container {
-    height: 1000px;
-    width: 1000px;
+    font-size: 35px;
 }
