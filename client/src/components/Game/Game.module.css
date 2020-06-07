@@ -9,6 +9,7 @@
 }
 
 .fieldset{
+    position: relative;
     height: calc(100% - 40px);  /* 40px = height of footer */ 
     margin-top: 20px;
     border: 6px solid #27FB6B;
