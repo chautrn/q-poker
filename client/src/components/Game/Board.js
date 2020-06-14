@@ -1,19 +1,22 @@
 import React from 'react';
 
-import styles from './Game.module.css';
 import boardStyles from './Board.module.css';
 
-const Board = ({ roomNumber }) => {
+import Player from './Player';
+import CommCards from './CommCards';
+
+const Board = () => {
     return (
-        <fieldset className={styles['fieldset']}>
-            <legend className={styles['legend']}> 
-                ROOM #{roomNumber} 
-            </legend>
-            <div className={boardStyles['board-border-1']}>
-                <div className={boardStyles['board-border-2']}>
-                </div>
+        <div className={boardStyles['board-border-1']}>
+            <Player position={0} />
+            <Player position={1} />
+            <Player position={2} />
+            <Player position={3} />
+            <Player position={4} />
+            <CommCards />
+            <div className={boardStyles['board-border-2']}>
             </div>
-        </fieldset>
+        </div>
     )
 }
 

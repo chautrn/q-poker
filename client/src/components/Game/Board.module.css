@@ -1,12 +1,14 @@
 .board-border-1 {
     position: absolute;
-    height: 60%;
-    width: 90%;
-    top: 45%;
+    height: 80%;
+    width: 55vw; 
+    max-height: 545px;
+    max-width: 1050px;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    margin-bottom: 122px; /* player container goes over edge */
     border: 3px solid #27FB6B;
-    border-radius: 200px;
+    border-radius: 400px;
 }
 
 .board-border-2 {
@@ -17,5 +19,5 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border: 3px solid #27FB6B;
-    border-radius: 180px;
+    border-radius: 400px;
 }

@@ -1,0 +1,18 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center; 
+    height: 8vw;
+    width: 26vw;
+    max-height: 175px;
+    max-width: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+img {
+    height: 100%;
+    margin-left: 1%;
+    margin-right: 1%; 
+}

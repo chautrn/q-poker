@@ -1,20 +1,38 @@
+.game-container {
+    height: calc(100% - 40px);  /* 40px = height of footer */ 
+    max-width: 1900px;
+}
+
 .main-row {
+    display: flex;
+    justify-content: center;
     height: 100%;
 }
+
 .board-col {
+    width: 80%;
+    margin-right: 1%;
 }
 
 .chat-col {
-
+    width: 18%;
 }
 
-.fieldset{
+.fieldset {
     position: relative;
-    height: calc(100% - 40px);  /* 40px = height of footer */ 
+    height: 100%;
+    max-height: 927px;
+    max-width: 1520px;
     margin-top: 20px;
+    padding-top: 7%;
     border: 6px solid #27FB6B;
     border-radius: 25px;
     box-shadow: 4px 4px #189B42;
+}
+
+.game-wrapper {
+    position: relative;
+    height: 70%;    
 }
 
 .legend {

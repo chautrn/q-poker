@@ -29,13 +29,12 @@
     justify-content: center;
     width: auto;
     height: auto;
-    max-width: 450px;
+    max-width: 1200px !important;
     background: #212121;
     border: 7px solid #27FB6B;
     border-radius: 25px;
     box-shadow: 4px 4px #189B42;
     padding: 50px;
-    max-width: 90% !important;
 }
 
 .lobby-row {

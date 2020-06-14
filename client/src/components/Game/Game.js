@@ -15,14 +15,26 @@ const Game = () => {
     return (
         <div className='wrapper'>
             <div className='content-wrap'>
-                <Container fluid>
+                <Container className={styles['game-container']} fluid>
                     <Row className={styles['main-row']}>
-                        <Col xs={9} className={styles['board-col']}>
-                            <Board roomNumber={roomNumber}/>
-                        </Col>
-                        <Col xs={3} className={styles['chat-col']}>
-                            <Chat />
-                        </Col>
+                        <div className={styles['board-col']}>
+                            <fieldset className={styles['fieldset']}>
+                                <legend className={styles['legend']}> 
+                                    ROOM #{roomNumber} 
+                                </legend>
+                                <div className={styles['game-wrapper']}>
+                                    <Board />
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div className={styles['chat-col']}>
+                            <fieldset className={styles['fieldset']}>
+                                <legend className={styles['legend']}> 
+                                    CHAT 
+                                </legend>
+                                <Chat />
+                            </fieldset>
+                        </div>
                     </Row>
                 </Container>
             </div>

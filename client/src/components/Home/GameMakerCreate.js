@@ -30,7 +30,7 @@ const GameMakerCreate = ({ socket, setJoinScreen }) => {
     return (
         <div>
             {redirect ? <Redirect to={redirect} /> :
-                <Container fluid className={styles['create-container']}>
+                <Container className={styles['create-container']}>
                     <Row className={[styles['lobby-row']].join(' ')}>
                         <Col className='mb-5' align='center' xl={4}>
                             <input
