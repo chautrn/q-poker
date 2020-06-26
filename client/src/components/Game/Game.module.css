@@ -1,5 +1,5 @@
-.game-container {
-    height: calc(100% - 40px);  /* 40px = height of footer */ 
+.container {
+    height: calc(100% - 20px);  /* 20px = height of footer */ 
     max-width: 1900px;
 }
 
@@ -22,8 +22,7 @@
     position: relative;
     height: 100%;
     max-width: 1520px;
-    margin-top: 20px;
-    padding-top: 7%;
+    margin-top: 10px;
     border: 6px solid #27FB6B;
     border-radius: 25px;
     box-shadow: 4px 4px #189B42;
@@ -31,7 +30,18 @@
 
 .game-wrapper {
     position: relative;
-    height: 70%;
+    height: calc(100% - 44px);
+}
+
+.board-wrapper {
+	position: relative;
+	height: 80%;
+}
+
+
+.control-wrapper {
+	position: relative;
+	height: 20%;
 }
 
 .legend {

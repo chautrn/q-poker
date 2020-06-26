@@ -35,7 +35,7 @@
 }
 
 #2 {
-    top: 85%; 
+    top: calc(100% - 4vw); 
     left: 50%;
     transform: translateX(-50%);
 }
@@ -84,7 +84,7 @@
     width: 16vw;
     height: 8vw;
     max-width: 300px;
-    max-height: 150px;
+    max-height: 125px;
     z-index: 99;
 }
 
@@ -131,3 +131,8 @@
     border: 1px solid red;
 }
 
+@media only screen and (min-width: 1545px) {
+	#2 {
+		top: calc(100% - 62.5px);
+	}
+}

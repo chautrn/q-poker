@@ -1,11 +1,11 @@
 .board-border-1 {
     position: absolute;
-    height: 100%;
-    width: 70vw; 
-    max-height: 545px;
-    max-width: 1050px;
+    height: 75%;
+	width: 90%;
+    max-width: 1200px;
     left: 50%;
     transform: translateX(-50%);
+	margin-top: 20px;
     margin-bottom: 122px; /* player container goes over edge */
     border: 3px solid #27FB6B;
     border-radius: 400px;
