@@ -18,7 +18,7 @@ const Player = ({ position }) => {
             <div className={styles['chips-container']}>
             </div>
         </div>
-    )
+    );
 }
 
 export default Player;

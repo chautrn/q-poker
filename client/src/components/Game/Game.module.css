@@ -1,12 +1,17 @@
 .container {
     height: calc(100% - 20px);  /* 20px = height of footer */ 
-    max-width: 1900px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .main-row {
     display: flex;
     justify-content: center;
     height: 100%;
+	width: 100%;
+    max-width: 1920px;
+	max-height: 1080px;
 }
 
 .board-col {
@@ -21,7 +26,6 @@
 .fieldset {
     position: relative;
     height: 100%;
-    max-width: 1520px;
     margin-top: 10px;
     border: 6px solid #27FB6B;
     border-radius: 25px;

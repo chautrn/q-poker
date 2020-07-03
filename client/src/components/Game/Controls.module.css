@@ -1,0 +1,55 @@
+#control-wrap {
+	height: 100%;
+	border: red solid 1px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#button-wrap {
+	border: red solid 1px;
+	height: 50%;
+	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#raise-wrap {
+	position: relative;
+}
+
+#raise-slider-wrap {
+	position: absolute;
+	border: solid red 1px;
+	bottom: 100%; 
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.button { /* from https://saruwakakun.com/en/css3-buttons */
+    display: inline-block;
+	font-size: 25px; 
+	margin-right: 12px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #14CC60;/*ButtonColor*/
+    color: #FFF;
+    border-bottom: solid 4px #189B42;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s;
+	user-select: none;
+}
+
+.button:active { /* OnClick */ /* from https://saruwakakun.com/en/css3-buttons */
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/* Move down */
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*Reduce Shadow*/
+    border-bottom: none;
+}
+
+.button:hover {
+	background: #27FB6B;
+}
