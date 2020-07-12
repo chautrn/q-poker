@@ -1,13 +1,11 @@
 #control-wrap {
 	height: 100%;
-	border: red solid 1px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 #button-wrap {
-	border: red solid 1px;
 	height: 50%;
 	width: 80%;
 	display: flex;
@@ -21,10 +19,17 @@
 
 #raise-slider-wrap {
 	position: absolute;
-	border: solid red 1px;
 	bottom: 100%; 
 	left: 50%;
 	transform: translateX(-50%);
+}
+
+#slider-wrap {
+	height: 50%;
+	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .button { /* from https://saruwakakun.com/en/css3-buttons */
