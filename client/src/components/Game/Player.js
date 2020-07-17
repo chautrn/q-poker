@@ -3,6 +3,8 @@ import React from 'react';
 import styles from './Player.module.css';
 
 const Player = ({ position }) => {
+	const balance = 1000; // for ui testing purposes, to be removed
+
 	return (
 		<div className={styles['player-container']} id={styles[`${position}`]}>
 			<div className={styles['name-container']}>
@@ -13,7 +15,7 @@ const Player = ({ position }) => {
 				<img src='/images/KS.png' />
 			</div>
 			<div className={styles['balance-container']}>
-				$1000
+				{'$' + balance.toLocaleString()}
 			</div>
 		</div>
 	);
