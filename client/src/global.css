@@ -1,5 +1,5 @@
 .wrapper {
-    background-color: #212121;
+    background-color: #212121; /* site background flashes white before loading. this fixes it */
     position: relative;
     overflow: hidden;
     padding-bottom: 40px;

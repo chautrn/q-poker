@@ -14,7 +14,7 @@
     position: absolute;
     z-index: 99;
 	background: #212121;
-	padding: 0 1% 0 1%;
+	padding: 1% 1% 1% 1%;
 }
 
 .name-container {
@@ -37,24 +37,72 @@
 	max-height: 150px;
 }
 
+.bottom-wrapper {
+	margin-top: 5%;
+}
+
 .balance-container {
+	display: flex;
+	width: auto;
+	overflow: hidden;
+	justify-content: center;
+	color: white;
+	font-size: 1vw;
+	border-radius: 20px;
+	background: #313131;
+}
+
+.blind-container {
+	display: flex;
+	width: 25%;
+	justify-content: center;
+	margin-left: 3%;
+	float: right;
+	color: white;
+	font-size: 1vw;
+	border-radius: 20px;
+	background: #313131;
+}
+
+.bet-container {
+	position: absolute;
+	height: 6vw;
+	width: 6vw;
+}
+
+.bet-icon {
+	height: 75%;
+	width: 100%;
+}
+
+.bet-label {
+	margin-top: 5%;
 	display: flex;
 	justify-content: center;
 	color: white;
 	font-size: 1vw;
-	margin-top: 5%;
 	border-radius: 20px;
 	background: #313131;
 }
 
 #0 {    
-    bottom: 60%;
+    bottom: 55%;
     left: -5%;
 }
 
+#0 > .bet-container {
+	bottom: 25%;
+	left: 105%;
+}
+
 #1 { 
-    top: 60%;
+    top: 55%;
     left: -5%;
+}
+
+#1 > .bet-container {
+	top: 25%;
+	left: 105%;
 }
 
 #2 {
@@ -63,14 +111,29 @@
     transform: translateX(-50%);
 }
 
+#2 > .bet-container { 
+	top: -34%;
+	left: 105%;
+}
+
 #3 {
-    top: 60%;
+    top: 55%;
     right: -5%;
 }
 
+#3 > .bet-container { 
+	bottom: 30%;
+	right: 105%;
+}
+
 #4 {
-    bottom: 60%;
+    bottom: 55%;
     right: -5%;
+}
+
+#4 > .bet-container {
+	top: 30%;
+	right: 105%;
 }
 
 img {
@@ -87,6 +150,10 @@ img {
 	}
 	
 	.balance-container {
+		font-size: 18px;
+	}
+
+	.blind-container {
 		font-size: 18px;
 	}
 }

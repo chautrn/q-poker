@@ -68,21 +68,12 @@ const Controls = () => {
 					</div>
 					:
 					<div id={styles['button-wrap']}>
-						<span 
-							className={styles['button']}
-							style={{
-								background: "#C75138",
-								borderBottom: "solid 4px #9C402C"}}> 
+						<span className={styles['button']}> 
 							FOLD
 						</span>
 						<span className={styles['button']}> CHECK </span>
 						<span 
 							className={styles['button']}
-							style={{
-								background: "#E3D900",
-								borderBottom: "solid 4px #9C9500",
-								marginRight: 0
-							}}
 							onClick={() => setRaising(true)}>
 							RAISE
 						</span>
