@@ -46,3 +46,16 @@
 .button:hover {
 	background: #27FB6B;
 }
+
+.disabled-button {
+    display: inline-block;
+	font-size: 3vh; 
+	margin-right: 12px;
+    padding: 0.5em 1em;
+    text-decoration: none;
+	background: #999999;
+    color: #FFF;
+	border-bottom: solid 4px #666666;
+    border-radius: 3px;
+	user-select: none;
+}

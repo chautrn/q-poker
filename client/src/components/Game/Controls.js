@@ -44,6 +44,7 @@ const ValueLabelComponent = (props) => {
 
 const Controls = () => {
 	const [raising, setRaising] = useState(false);
+	const [isCurrentTurn, setCurrentTurn] = useState(false);
 
 	return (
 		<div id={styles['control-wrap']}>
@@ -67,17 +68,25 @@ const Controls = () => {
 						<span className={styles['button']}>CONFIRM</span>
 					</div>
 					:
-					<div id={styles['button-wrap']}>
-						<span className={styles['button']}> 
-							FOLD
-						</span>
-						<span className={styles['button']}> CHECK </span>
-						<span 
-							className={styles['button']}
-							onClick={() => setRaising(true)}>
-							RAISE
-						</span>
-					</div>
+					isCurrentTurn
+						?
+							<div id={styles['button-wrap']}>
+								<span className={styles['button']}> 
+									FOLD
+								</span>
+								<span className={styles['button']}> CHECK </span>
+								<span 
+									className={styles['button']}
+									onClick={() => setRaising(true)}>
+									RAISE
+								</span>
+							</div>
+							:
+							<div id={styles['button-wrap']}>
+								<span className={styles['disabled-button']}> FOLD </span>
+								<span className={styles['disabled-button']}> CHECK </span>
+								<span className={styles['disabled-button']}> RAISE </span>
+							</div>
 			}
 		</div>
 	);
