@@ -44,7 +44,7 @@ const ValueLabelComponent = (props) => {
 
 const Controls = () => {
 	const [raising, setRaising] = useState(false);
-	const [isCurrentTurn, setCurrentTurn] = useState(false);
+	const [isCurrentTurn, setCurrentTurn] = useState(true); // will be made into prop, passed from parent
 
 	return (
 		<div id={styles['control-wrap']}>

@@ -4,6 +4,7 @@ import boardStyles from './Board.module.css';
 
 import Player from './Player';
 import CommCards from './CommCards';
+import Pot from './Pot';
 
 const Board = () => {
     return (

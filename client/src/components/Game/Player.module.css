@@ -67,7 +67,9 @@
 .bet-container {
 	position: absolute;
 	height: 6vw;
+	max-height: 115px;
 	width: 6vw;
+	max-width: 115px;
 }
 
 .bet-icon {
@@ -156,4 +158,9 @@ img {
 	.blind-container {
 		font-size: 18px;
 	}
+
+	.bet-label {
+		font-size: 18px;
+	}
+
 }
