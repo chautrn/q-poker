@@ -1,97 +1,119 @@
+const helperFunctions = require('./helper-functions.js');
+
 // Input are passed in from room-manager.js
-
-const createPlayer = (userId, username, balance) => {
-    return {
-        id: userId,
-        name: username,
-        currentBalance: balance,
-        inRound: false,
-        hand: null,
-        move: null
-    };
-}
-
-const createDeck = () => {
-    return [
-        '2s', '2c', '2h', '2d',
-        '3s', '3c', '3h', '3d',
-        '4s', '4c', '4h', '4d',
-        '5s', '5c', '5h', '5d',
-        '6s', '6c', '6h', '6d',
-        '7s', '7c', '7h', '7d',
-        '8s', '8c', '8h', '8d',
-        '9s', '9c', '9h', '9d',
-        'Ts', 'Tc', 'Th', 'Td',
-        'Js', 'Jc', 'Jh', 'Jd',
-        'Qs', 'Qc', 'Qh', 'Qd',
-        'Ks', 'Kc', 'Kh', 'Kd',
-        'As', 'Ac', 'Ah', 'Ad'
-    ];
-}
-
 class Poker {
-    // User object = [userId, name]
-    constructor(initialUser, clientHandler, { startingChips, timeLimit, punishment }) { // gameOptions = { startingChips, timeLimit, punishment }
-        // Options
-        this.startingChips = startingChips;
-        this.timeLimit = timeLimit;
-        this.punishment = punishment;
+	constructor(initialPlayers, gameOptions) {
+		// Applying game options 
+		this.startingChips = gameOptions.startingChips;
+		this.timeLimit = gameOptions.timeLimit;
+		this.punishment = gameOptions.punishment;
+		this.maxRaises = 3; // TODO: implement in client
 
-        // Game data 
-        this.deck = createDeck();
-        this.players = [createPlayer(initialUserId)];
-        /* Betting Rounds:
-            Preflop 0
-            Flop 1
-            Turn 2
-            River 3
-            Showdown 4 */
-        this.bettingRound = 0;
-        this.pot = 0;
-        this.communityCards = [];
-        this.buttonIndex = 0;
+		// Game initialization 
+		this.deck = helperFunctions.createDeck();
+		this.players = [];
+		for (let player of initialPlayers) {
+			this.players.push(helperFunctions.createPlayer(player, this.startingChips));
+		}
 
-        // Round data
-        this.currentBet;
-        this.dealerButton;
-    }
+		/* 
+		Betting Rounds:
+		Preflop 0
+		Flop 1
+		Turn 2
+		River 3
+		Showdown 4 
+		*/
+		this.bettingRound = 0;
 
-    getCard() {
-        let index = Math.floor(Math.random() * this.deck.length);
-        let card = this.deck[index];
-        this.deck.splice(index, 1);
+		// Round data
+		this.communityCards = [];
+		this.pot = 0;
+		this.smallBlindIndex = 0; // small blind position relative to players array
+		this.currentPlayerIndex = 0;
+		this.currentBet = 0;
+		this.raises = 0;
+	}
 
-        return card;
-    }
+	getCard() {
+		let index = Math.floor(Math.random() * this.deck.length);
+		let card = this.deck[index];
+		this.deck.splice(index, 1);
 
-    /* Moves:
-     -2 = need response
-     -1 = fold
-     0 = check
-     else = bet */
-    start() {
-        for (player in this.players) {
-            player.inRound = true;
-            player.currentBalance = startingChips;
-            player.move = -2;
-        }
-    }    
+		return card;
+	}
 
-    preflop() {
-        for (player in this.players) {
-            let     
-        }
-    }
+	/* 
+	Moves:
+	-2 = need response
+	-1 = fold
+	0 = check
+	else = bet amount
+	*/
 
-    submitMove(userId, move) { // Returns true if response is successful, false otherwise
-        let user = this.users.find(u => u.id === userId);
-    }
+	start() {
+		for (let player of this.players) {
+			player.inRound = true;
+			player.balance = this.startingChips;
+			player.move = -2;
+			player.hand = [this.getCard(), this.getCard()];
+		}
+
+		this.smallBlindIndex = 0;
+		this.currentPlayerIndex = 0;
+	}    
+
+	submitMove(move) {
+		let player = this.players[this.currentPlayerIndex];
+
+		if (move == -1) { // fold 
+			player.inRound = false;	
+		}
+		else if (move > 0) { // raise
+			this.currentBet = move;
+			player.balance -= move;
+			
+			if (this.raises <= this.maxRaises) {
+				// requires everyone else to respond to the raise
+				for (let i = 0; i < this.players.length; i++) {
+					if (i != this.currentPlayerIndex) {
+						this.players[i].move = -2; // reminder: -2 means that a move is needed
+					}
+				}
+			}
+		}
+
+		/* 
+		If not fold, then player has checked. Nothing happens with checks, except for the changing of the current player, which will
+		be handled in all folds, raises, and checks.
+		*/
+
+		this.nextRound();
+
+	}
+
+	nextRound() {
+		// to be implemented
+		return;
+	}
 
 }
 
 let testObj = { startingChips: 1200, timeLimit: 20, punishment: true };
 
-let pokerObj = new Poker("chau", testObj);
+let testUserObj = {
+	socketID: 12312312,
+	username: "chau"
+};
 
+let playerArray = [testUserObj];
 
-console.log(JSON.stringify(pokerObj));
+let pokerObj = new Poker(playerArray, testObj);
+
+pokerObj.start();
+
+console.log(pokerObj.players);
+
+pokerObj.submitMove(400);
+
+console.log(pokerObj.players);
